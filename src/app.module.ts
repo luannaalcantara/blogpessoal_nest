@@ -3,8 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Postagem } from './postagem/entities/postagem.entity';
-import { PostagemController } from './postagem/controller/postagem.controller';
-import { PostagemService } from './postagem/services/postagem.service';
+import { PostagemModule } from './postagem/postagem.modules';
+
 
 @Module({
   imports: [
@@ -18,10 +18,10 @@ import { PostagemService } from './postagem/services/postagem.service';
       entities: [Postagem],
       synchronize: true
     }),
-
-  TypeOrmModule.forFeature([Postagem]),
-  ],
-  controllers: [AppController, PostagemController],
-  providers: [AppService, PostagemService],
+  PostagemModule,
+ 
+  ], 
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
