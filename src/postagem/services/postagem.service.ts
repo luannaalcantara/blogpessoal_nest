@@ -18,7 +18,8 @@ export class PostagemService {
     async findAll(): Promise<Postagem[]> {
         return await this.postagemRepository.find({
             relations: {
-                tema: true
+                tema: true,
+                usuario: true  //relaciona o tema com o usuario 
             }
         }); // selet* from tb_postagem;
 
@@ -31,7 +32,7 @@ export class PostagemService {
                 id
             },
             relations: {
-                tema: true
+                tema: true 
             }
 
         });
